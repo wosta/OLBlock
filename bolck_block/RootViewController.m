@@ -2,7 +2,7 @@
 //  RootViewController.m
 //  bolck_block
 //
-//  Created by 魏旺 on 16/3/9.
+//  Created by peter on 16/3/9.
 //  Copyright © 2016年 olive. All rights reserved.
 //
 
@@ -18,23 +18,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    UIButton *button =  [[UIButton alloc] init];
-    button.frame = CGRectMake(50, 100, 100, 50);
-    [button setTitle:@"aaa" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor redColor];
+    UIButton *button =  [[UIButton alloc] initWithFrame:CGRectMake(50, 50, 200, 50)];
+    [button setTitle:@"好的" forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor blueColor];
     [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 }
 
 - (void)buttonClick {
-    if (self.changeTitle) {
-        self.changeTitle(@"cccccc");
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+    self.changeTitle(@"OK");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)changeTitleName:(ChangeTitle)changeTitleBlock {
-    _changeTitle = [changeTitleBlock copy];
+- (void)setChangeTitle:(ChangeTitle)changeTitle {
+    self.changeTitle = [changeTitle copy];
 }
 
 - (void)didReceiveMemoryWarning {

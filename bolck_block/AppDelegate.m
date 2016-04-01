@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  bolck_block
 //
-//  Created by 魏旺 on 16/3/9.
+//  Created by peter on 16/3/9.
 //  Copyright © 2016年 olive. All rights reserved.
 //
 
