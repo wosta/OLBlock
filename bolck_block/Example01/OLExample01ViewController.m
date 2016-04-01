@@ -8,8 +8,18 @@
 
 #import "OLExample01ViewController.h"
 
-@interface OLExample01ViewController ()
+typedef NSString *(^YourBlock)(int, int);
+typedef int (^MySquare)(int);
 
+@interface OLExample01ViewController ()
+/** 第一种 */
+@property (nonatomic, copy) void(^myBlock)(int);
+/**
+ * typedef 定义 NSString *(^YourBlock)(int, int)
+ */
+@property (nonatomic, copy) YourBlock yourBlock;
+
+@property (nonatomic, copy) MySquare myFunction;
 @end
 
 @implementation OLExample01ViewController
@@ -21,7 +31,9 @@
     
 //    [self block01];
 //    [self block02];
-    [self block03];
+//    [self block03];
+//    [self block04];
+    [self block05];
 }
 
 /**
@@ -56,18 +68,81 @@
 }
 
 /**
- *  typedef
+ *  如何定义一个block属性
+ 第一种：（直接写）
+ @property (copy) void(^MyBlock)(void);
+ 
+ 第二种：（typedef）
+ typedef void(^MyBlock)(void);
+ 
+ @property (nonatomic, copy) MyBlock block;
  */
 - (void)block03 {
+    // 赋值给yourBlock 如果么有这一步，下面的yourStr这一步报错
+    self.yourBlock = ^(int a, int b){
+        return @"aaaaa";
+    };
+    // 赋值
+    NSString *yourStr = self.yourBlock(7, 8);
+    NSLog(@"%@++++++%@", self.yourBlock, yourStr);
+    
+    [self blockFunc:^NSString *(int a, int b) {
+        a = 7;
+        b = 8;
+        return @"aaa";
+    }];
+    
+    [self blockFunction:^NSString *(int a, int b) {
+        return [NSString stringWithFormat:@"a+b=%zd+%zd=%zd", a, b, a+b];
+    }];
+    [self blockFunction:self.yourBlock];
+    
+}
+
+- (void)blockFunc:(NSString *(^)(int a, int b))blockFun{
+    NSString *str = blockFun(7, 8);
+    NSLog(@"blockFunc:str= %@", str);
+}
+
+- (void)blockFunction:(YourBlock)yourBlock {
+    
+}
+
+- (void)block04 {
+    // 这种写法挺诡异的，没有返回值不说，关键是返回值类型没有，为何能够return 整形，当然这里字符串也行
+    ^(int a){return 2*a;};
+    ^(int a){
+        return a * a ;
+    };
+    // 这种写法更诡异了，花括号末尾为何不能有; 且(5); 无法理解，好诡异
+    // 网上一种说法：这是代表Block会回传输入值的平方值（int a 就是参数列， return a*a; 就是行为主体）。记得行为主体里最后要加“;”，因为是叙述，而整个{}最后也要加“;”，因为Block是物件实体。
+    int result01 = ^(int a){return 2*a;}(5);
+    NSString * result02 = ^(int a) {
+        return @"aaaa";
+    }
+    (5);
+    
+    NSLog(@"%d", result01);
+    NSLog(@"%@", result02);
+}
+
+- (void)block05 {
+    int (^square)(int a) = ^(int a){
+        NSLog(@"square:%d", a*a);
+        return a * a;
+    };
+    NSLog(@"%d", square(5));
+    
+//    self.myFunction(square);
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
-/*
+/*1
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
