@@ -19,6 +19,11 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+// 参数block不能有名称
+- (void)getQiNiuScope:(NSString *)scope success:(void (^)(NSString *token)) success faile:(void (^)(NSError *error)) faile{
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
