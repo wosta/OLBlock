@@ -29,11 +29,11 @@ typedef int (^MySquare)(int);
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view from its nib.
     
-//    [self block01];
+    [self block01];
 //    [self block02];
 //    [self block03];
 //    [self block04];
-    [self block05];
+//    [self block05];
 }
 
 /**

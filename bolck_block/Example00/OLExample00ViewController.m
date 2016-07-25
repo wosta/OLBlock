@@ -1,28 +1,23 @@
 //
-//  OLExample03ViewController.m
-//  OLCollectionViewController
+//  OLExample00ViewController.m
+//  bolck_block
 //
-//  Created by peter on 16/3/29.
+//  Created by olive on 16/7/25.
 //  Copyright © 2016年 olive. All rights reserved.
 //
 
-#import "OLExample03ViewController.h"
+#import "OLExample00ViewController.h"
 
-@interface OLExample03ViewController ()
+@interface OLExample00ViewController ()
 
 @end
 
-@implementation OLExample03ViewController
+@implementation OLExample00ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-}
-
-// 参数block不能有名称
-- (void)getQiNiuScope:(NSString *)scope success:(void (^)(NSString *token)) success faile:(void (^)(NSError *error)) faile{
-    
 }
 
 - (void)didReceiveMemoryWarning {

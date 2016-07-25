@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "RootViewController.h"
+#import "OLExample00ViewController.h"
 #import "OLExample01ViewController.h"
 #import "OLExample02ViewController.h"
 #import "OLExample03ViewController.h"
@@ -45,7 +46,7 @@ static NSString * const ViewControllerReuseIdentifierId = @"ViewControllerReuseI
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ViewControllerReuseIdentifierId];
-    cell.textLabel.text = [NSString stringWithFormat:@"Example0%zd", indexPath.row+1];
+    cell.textLabel.text = [NSString stringWithFormat:@"Example0%zd", indexPath.row];
     return cell;
 }
 
@@ -53,8 +54,8 @@ static NSString * const ViewControllerReuseIdentifierId = @"ViewControllerReuseI
     switch (indexPath.row) {
         case 0:
         {
-            OLExample01ViewController *examp01 = [[OLExample01ViewController alloc] init];
-            [self.navigationController pushViewController:examp01 animated:YES];
+            OLExample00ViewController *examp00 = [[OLExample00ViewController alloc] init];
+            [self.navigationController pushViewController:examp00 animated:YES];
         }
             break;
             case 1:
