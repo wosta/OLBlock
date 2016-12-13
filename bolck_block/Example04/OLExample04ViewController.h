@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface OLExample04ViewController : UIViewController
+@property (nonatomic, copy) int (^myBoloc)(int, int);
 
+- (void)okBlock:(int (^)(int))block;
 @end

@@ -16,7 +16,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    void (^printBlock)() = ^(){
+        NSLog(@"no num");
+    };
+    
+    void (^myBolck)(int) = ^(int num){
+        NSLog(@"num:%d", num);
+    };
+    
+    printBlock();
+    printBlock(9);
+    myBolck(10);
+    
+    printNumBlock(12);
+    
+    int (^blockName)() = ^(){
+        return 10;
+    };
+    
+    NSLog(@"%d", blockName());
+}
+
+void (^printNumBlock)(int) = ^(int num) {
+    printf("int number is %d", num);
+};
+
+- (void)okBlock:(int (^)(int))block {
+    int b = block(3);
+    NSLog(@"b=%d", b);
 }
 
 - (void)didReceiveMemoryWarning {

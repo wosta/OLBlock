@@ -34,6 +34,7 @@ static NSString * const ViewControllerReuseIdentifierId = @"ViewControllerReuseI
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [UIView new];
     [self.view addSubview:self.tableView];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -79,6 +80,10 @@ static NSString * const ViewControllerReuseIdentifierId = @"ViewControllerReuseI
             case 4:
         {
             OLExample04ViewController *examp04 = [[OLExample04ViewController alloc] init];
+            [examp04 okBlock:^int(int a) {
+                NSLog(@"a===%d", a);
+                return a*3;
+            }];
             [self.navigationController pushViewController:examp04 animated:YES];
         }
             break;
